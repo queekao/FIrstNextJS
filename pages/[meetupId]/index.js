@@ -31,7 +31,8 @@ export async function getStaticPaths() {
   //sencond argument define which field we wanna extract
   client.close();
   return {
-    fallback: false,
+    fallback: "blocking",
+    // if "blocking" User wont see anything until the page was pre-generated
     paths: meetups.map((meetup) => ({
       params: {meetupId: JSON.stringify(meetup._id)},
     })),
